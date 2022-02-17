@@ -25,14 +25,7 @@
 </div>
 <script>
     const ball = document.getElementsByClassName("ball");
-    document.onmousemove = moveDetected;
-
-    window.addEventListener('touchmove', function (e) {
-        moveDetected(e);
-        e.preventDefault();
-    }, {passive: false});
-
-    function moveDetected(event) {
+    document.onmousemove = function (event) {
         const x = event.clientX * 100 / window.innerWidth + "%";
         const y = event.clientY * 100 / window.innerHeight + "%";
 
@@ -41,7 +34,21 @@
             ball[i].style.top = y / 2;
             ball[i].style.transform = "translate(" + x + "," + y + ")";
         }
-    }
+    };
+
+    document.addEventListener('touchmove', function (event) {
+        const touch = event.touches[0];
+        const x = touch.clientX * 100 / window.innerWidth + "%";
+        const y = touch.clientY * 100 / window.innerHeight + "%";
+
+        for (let i = 0; i < 2; i++) {
+            ball[i].style.left = x / 2;
+            ball[i].style.top = y / 2;
+            ball[i].style.transform = "translate(" + x + "," + y + ")";
+        }
+        event.preventDefault();
+    });
+
 </script>
 </body>
 </html>
