@@ -28,6 +28,7 @@
     document.onmousemove = moveDetected;
 
     window.addEventListener('touchmove', function (e) {
+        moveDetected(e);
         e.preventDefault();
     }, {passive: false});
 
