@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Minion</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div class="body">
+            <div class="eyes">
+                <div class="eye">
+                    <div class="ball"></div>
+                </div>
+                <div class="eye">
+                    <div class="ball"></div>
+                </div>
+            </div>
+        </div>
+        <script>
+            var ball = document.getElementsByClassName("ball");
+            document.onmousemove=function(){
+                var x=event.clientX*100/window.innerWidth+"%";
+                var y=event.clientY*100/window.innerHeight+"%";
+
+                for(var i=0;i<2;i++){
+                    ball[i].style.left=x/2;
+                    ball[i].style.top=y/2;
+                    ball[i].style.transform="translate("+x+","+y+")";
+                }
+            }
+        </script>
+    </body>
+</html>
